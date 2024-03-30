@@ -88,7 +88,7 @@
 };
 
 
-/**
+var /**
  * Object managing different states.
  *
  * @module states
@@ -96,16 +96,16 @@
  * @property {function} loading - Function handling loading state operations.
  * @property {function} loaded - Function handling loaded state operations.
  * @property {function} error - Function handling error state operations.
- */ const $fc4b3df073dcc3fa$var$states = {
+ */ $fc4b3df073dcc3fa$export$2e2bcd8739ae039 = {
     waiting: (element)=>{
         element.setAttribute((0, $28fa4f35244940de$export$2e2bcd8739ae039).stateAttr, (0, $28fa4f35244940de$export$2e2bcd8739ae039).states.waiting);
     },
     loading: (element, options)=>{
         const handleLoad = ()=>{
-            $fc4b3df073dcc3fa$var$states.loaded(element, options);
+            states.loaded(element, options);
         };
         const handleError = ()=>{
-            $fc4b3df073dcc3fa$var$states.error(element, options, "loading media.");
+            states.error(element, options, "loading media.");
         };
         element.addEventListener("load", handleLoad, {
             once: true
@@ -128,7 +128,6 @@
         options.onError(element, error);
     }
 };
-var $fc4b3df073dcc3fa$export$2e2bcd8739ae039 = $fc4b3df073dcc3fa$var$states;
 
 
 
