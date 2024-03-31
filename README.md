@@ -4,23 +4,31 @@ Lazy Load Images is a JavaScript utility that allows you to lazy load visual con
 
 ## Usage
 
-To use Lazy Load Images, include the `lazyLoad` function in your JavaScript code. The function takes two optional parameters:
+To use Lazy Load Images, include the `lazyLoad` function in your code. The function takes two optional parameters:
 
-- `selector` (string, default: 'lazy'): CSS selector for lazy load items.
-- `observerOptions` (object): Options for the Intersection Observer.
+- `selector` (string, array, default: 'lazy'): CSS selector for lazy load items.
+- `customOptions` (object): Options for the `lazyLoad`.
 
 If no selector is provided, the default selector 'lazy' will be used.
 If no observer options are provided, default options will be used.
 
 ```javascript
 lazyLoad('lazy', {
-  root: null,
-  threshold: 1,
-  rootMargin: '300px 0px',
+  attrs: {
+    src: 'lazy',
+    srcset: 'lazy-srcset',
+    poster: 'lazy-poster',
+  },
+  observer: {
+    root: null,
+    threshold: 1,
+    rootMargin: '100% 0px',
+  },
+  onLoaded: () => {},
+  onLoading: () => {},
+  onError: (element, error) => console.error('Error on:', element, error),
 });
 ```
-
-The lazy load functionality will be applied to all elements that match the specified selector. When an element comes into view, its 'lazy' attribute will be used as the source for the 'src' attribute, and the element will be marked as loaded by adding the '-loaded' class.
 
 ## License
 
