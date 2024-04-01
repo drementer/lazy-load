@@ -37,7 +37,7 @@
     },
     onLoaded: ()=>{},
     onLoading: ()=>{},
-    onError: (element, error)=>console.error("Error on:", element, error)
+    onError: (element, error)=>console.warn("Error on:", element, error)
 };
 
 
@@ -143,7 +143,7 @@ var /**
  */ $9eb20e71c19fcebc$export$2e2bcd8739ae039 = (element)=>{
     const elementType = element.tagName.toLowerCase();
     const isSupported = (0, $28fa4f35244940de$export$2e2bcd8739ae039).supportedElements.includes(elementType);
-    if (isSupported) throw new Error(`${elementType} Element is not supported!`);
+    if (!isSupported) throw new Error(`${elementType} Element is not supported!`);
     return true;
 };
 
@@ -208,7 +208,6 @@ var $e05782b8f6baf6a3$export$2e2bcd8739ae039 = (selector, customOptions = {})=>{
     };
     try {
         const lazyItems = (0, $d7580633941bee6a$export$2e2bcd8739ae039)(selector);
-        if (!lazyItems.length) throw new Error("No lazy loadable element found!");
         lazyItems.forEach(processLazyItem);
     } catch (error) {
         console.error("Lazy error:", error.message);
