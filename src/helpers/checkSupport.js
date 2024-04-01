@@ -13,7 +13,6 @@ export default (element) => {
   const elementType = element.tagName.toLowerCase();
   const isSupported = settings.supportedElements.includes(elementType);
 
-  if (isSupported) return true;
-
-  throw new Error(`Element type ${elementType} is not supported!`);
+  if (isSupported) throw new Error(`${elementType} Element is not supported!`);
+  return true;
 };

@@ -143,8 +143,8 @@ var /**
  */ $9eb20e71c19fcebc$export$2e2bcd8739ae039 = (element)=>{
     const elementType = element.tagName.toLowerCase();
     const isSupported = (0, $28fa4f35244940de$export$2e2bcd8739ae039).supportedElements.includes(elementType);
-    if (isSupported) return true;
-    throw new Error(`Element type ${elementType} is not supported!`);
+    if (isSupported) throw new Error(`${elementType} Element is not supported!`);
+    return true;
 };
 
 
@@ -182,7 +182,9 @@ var /**
     ];
     if (selector instanceof NodeList) return selector;
     if (selector instanceof Array) return selector;
-    return document.querySelectorAll(selector);
+    const elements = document.querySelectorAll(selector);
+    if (!elements.length) throw new Error("No lazy loadable element found!");
+    return elements;
 };
 
 

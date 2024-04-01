@@ -12,7 +12,7 @@ export default (selector) => {
   if (selector instanceof Array) return selector;
 
   const elements = document.querySelectorAll(selector);
-  if (!elements.length) throw new Error('No lazy loadable element found!');
 
+  if (!elements.length) throw new Error('No lazy loadable element found!');
   return elements;
 };
