@@ -9,7 +9,7 @@ import settings from '../utils/settings.js';
  * @property {function} loaded - Function handling loaded state operations.
  * @property {function} error - Function handling error state operations.
  */
-export default {
+const states = {
   waiting: (element) => {
     element.setAttribute(settings.stateAttr, settings.states.waiting);
   },
@@ -45,3 +45,5 @@ export default {
     options.onError(element, error);
   },
 };
+
+export default states;
