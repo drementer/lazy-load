@@ -36,7 +36,6 @@ export default (selector, customOptions = {}) => {
 
   try {
     const lazyItems = getElements(selector);
-    if (!lazyItems.length) throw new Error('No lazy loadable element found!');
 
     lazyItems.forEach(processLazyItem);
   } catch (error) {
