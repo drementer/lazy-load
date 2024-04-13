@@ -5,21 +5,22 @@ import settings from '../utils/settings.js';
  *
  * @module states
  *
- * @property {function} loading - Function handling loading state operations.
- * @property {function} loaded - Function handling loaded state operations.
- * @property {function} error - Function handling error state operations.
+ * @property {function} setWaitingState - Function handling waiting state operations.
+ * @property {function} setLoadingState - Function handling loading state operations.
+ * @property {function} setLoadedState - Function handling loaded state operations.
+ * @property {function} setErrorState - Function handling error state operations.
  */
 const states = {
-  waiting: (element) => {
+  setWaiting: (element) => {
     element.setAttribute(settings.stateAttr, settings.states.waiting);
   },
 
-  loading: (element, options) => {
+  setLoading: (element, options) => {
     const handleLoad = () => {
-      states.loaded(element, options);
+      states.setLoaded(element, options);
     };
     const handleError = () => {
-      states.error(element, options, 'loading media.');
+      states.setError(element, options, 'loading media.');
     };
 
     element.addEventListener('load', handleLoad, { once: true });
@@ -29,7 +30,7 @@ const states = {
     options.onLoading(element);
   },
 
-  loaded: (element, options) => {
+  setLoaded: (element, options) => {
     element.setAttribute(settings.stateAttr, settings.states.loaded);
 
     element.removeAttribute(options.attrs.src);
@@ -39,7 +40,7 @@ const states = {
     options.onLoaded(element);
   },
 
-  error: (element, options, error) => {
+  setError: (element, options, error) => {
     element.setAttribute(settings.stateAttr, settings.states.error);
 
     options.onError(element, error);

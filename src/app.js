@@ -19,18 +19,18 @@ export default (selector, customOptions = {}) => {
   const options = { ...defaultOptions, ...customOptions };
 
   const observerCallback = (target) => {
-    states.loading(target, options);
+    states.setLoading(target, options);
     loadAsset(target, options);
   };
 
   const processLazyItem = (item) => {
     try {
-      states.waiting(item, options);
+      states.setWaiting(item, options);
 
       checkSupport(item);
       observer(item, observerCallback, options.observer);
     } catch (error) {
-      states.error(item, options, error.message);
+      states.setError(item, options, error.message);
     }
   };
 
