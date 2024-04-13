@@ -10,7 +10,7 @@ import settings from '../utils/settings.js';
  * @property {function} setLoadedState - Function handling loaded state operations.
  * @property {function} setErrorState - Function handling error state operations.
  */
-const states = {
+export default {
   setWaiting: (element) => {
     element.setAttribute(settings.stateAttr, settings.states.waiting);
   },
@@ -24,15 +24,12 @@ const states = {
     const assetAttr = Object.entries(options.attrs);
 
     element.setAttribute(settings.stateAttr, settings.states.loaded);
-    assetAttr.forEach(([attr]) => element.removeAttribute(attr));
+    assetAttr.forEach(([attr, lazyAttr]) => element.removeAttribute(lazyAttr));
     options.onLoaded(element);
   },
 
   setError: (element, options, error) => {
     element.setAttribute(settings.stateAttr, settings.states.error);
-
     options.onError(element, error);
   },
 };
-
-export default states;
