@@ -13,7 +13,7 @@
  */
 export default {
   stateAttr: 'lazy-state',
-  supportedElements: ['img', 'video', 'embed', 'object'],
+  supportedElements: ['img', 'video', 'embed', 'object', 'iframe', 'audio'],
   states: {
     waiting: 'waiting',
     loading: 'loading',
