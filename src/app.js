@@ -18,27 +18,28 @@ import getElements from './helpers/getElements.js';
 export default (selector, customOptions = {}) => {
   const options = { ...defaultOptions, ...customOptions };
 
-  const observerCallback = (target) => {
+  const handleLoading = (target) => {
+    const handleLoad = () => {
+      states.setLoaded(target, options);
+    };
+
+    const handleError = () => {
+      states.setError(target, options, 'Loading media.');
+    };
+
     states.setLoading(target, options);
     loadAsset(target, options);
+
+    target.addEventListener('load', handleLoad, { once: true });
+    target.addEventListener('error', handleError, { once: true });
   };
 
   const processLazyItem = (item) => {
-    const handleLoad = () => {
-      states.setLoaded(item, options);
-    };
-    const handleError = () => {
-      throw new Error('Loading media.');
-    };
-
     try {
       states.setWaiting(item, options);
 
       checkSupport(item);
-      observer(item, observerCallback, options.observer);
-
-      item.addEventListener('load', handleLoad, { once: true });
-      item.addEventListener('error', handleError, { once: true });
+      observer(item, handleLoading, options.observer);
     } catch (error) {
       states.setError(item, options, error.message);
     }
