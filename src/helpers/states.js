@@ -16,27 +16,15 @@ const states = {
   },
 
   setLoading: (element, options) => {
-    const handleLoad = () => {
-      states.setLoaded(element, options);
-    };
-    const handleError = () => {
-      states.setError(element, options, 'loading media.');
-    };
-
-    element.addEventListener('load', handleLoad, { once: true });
-    element.addEventListener('error', handleError, { once: true });
-
     element.setAttribute(settings.stateAttr, settings.states.loading);
     options.onLoading(element);
   },
 
   setLoaded: (element, options) => {
+    const assetAttr = Object.entries(options.attrs);
+
     element.setAttribute(settings.stateAttr, settings.states.loaded);
-
-    element.removeAttribute(options.attrs.src);
-    element.removeAttribute(options.attrs.srcset);
-    element.removeAttribute(options.attrs.poster);
-
+    assetAttr.forEach(([attr]) => element.removeAttribute(attr));
     options.onLoaded(element);
   },
 

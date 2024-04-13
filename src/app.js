@@ -24,11 +24,21 @@ export default (selector, customOptions = {}) => {
   };
 
   const processLazyItem = (item) => {
+    const handleLoad = () => {
+      states.setLoaded(item, options);
+    };
+    const handleError = () => {
+      throw new Error('Loading media.');
+    };
+
     try {
       states.setWaiting(item, options);
 
       checkSupport(item);
       observer(item, observerCallback, options.observer);
+
+      item.addEventListener('load', handleLoad, { once: true });
+      item.addEventListener('error', handleError, { once: true });
     } catch (error) {
       states.setError(item, options, error.message);
     }
