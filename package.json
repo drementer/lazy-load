@@ -1,24 +1,48 @@
 {
-	"name": "lazy-load.js",
-	"version": "1.0.5",
-	"homepage": "https://github.com/drementer/lazy-load.js",
-	"description": "Loads visual content when it approaches the visible area of ​​the screen to increase page loading speed.",
-	"scripts": {
-		"build": "parcel build src/lazy.js --dist-dir dist --no-source-maps"
-	},
-	"keywords": [
-		"js",
-		"lazy",
-		"lazy load",
-		"lazy-load.js"
-	],
-	"author": "drementer <klncarslanburak@gmail.com> (https://github.com/drementer)",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/drementer/lazy-load.js.git"
-	},
-	"bugs": {
-		"url": "https://github.com/drementer/lazy-load.js/issues"
-	}
+  "name": "lazy-load.js",
+  "version": "2.0.0",
+  "homepage": "https://github.com/drementer/lazy-load.js",
+  "description": "Another, another and another Lazy Load Library",
+  "source": "src/app.js",
+  "module": "dist/lazy-load.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build --no-source-maps --no-cache",
+    "jasmine": "jasmine-browser-runner serve"
+  },
+  "keywords": [
+    "lazy",
+    "lazy load",
+    "lazy loader",
+    "lazy loading",
+    "lazy-load.js",
+    "loader",
+    "lazyloader",
+    "lazyload",
+    "performance",
+    "web performance",
+    "IntersectionObserver",
+    "image",
+    "video",
+    "iframe"
+  ],
+  "author": "drementer <klncarslanburak@gmail.com> (https://github.com/drementer)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drementer/lazy-load.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/drementer/lazy-load.js/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/resolver-glob": "^2.9.3",
+    "jasmine": "^5.1.0",
+    "jasmine-browser-runner": "^2.3.0",
+    "jasmine-core": "^5.1.2",
+    "parcel": "^2.9.3"
+  }
 }

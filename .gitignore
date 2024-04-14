@@ -3,4 +3,6 @@
 [Dd]esktop.ini
 
 # Project
+node_modules/
+.parcel-cache/
 package-lock.json
