@@ -31,5 +31,5 @@ export default {
   onWaiting: () => {},
   onLoaded: () => {},
   onLoading: () => {},
-  onError: (element, error) => console.warn('Error on:', element, error),
+  onError: () => {},
 };

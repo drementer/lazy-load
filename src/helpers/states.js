@@ -30,6 +30,7 @@ export default {
   },
 
   setError: (element, options, error) => {
+    console.warn('Error on:', element, error);
     element.setAttribute(settings.stateAttr, settings.states.error);
     options.onError(element, error);
   },
