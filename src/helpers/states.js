@@ -29,6 +29,9 @@ export default {
     options.onLoaded(element);
   },
 
+  /*
+		TODO: [] Update error logging to handle top level of app.
+	*/
   setError: (element, options, error) => {
     console.warn('Error on:', element, error);
     element.setAttribute(settings.stateAttr, settings.states.error);
