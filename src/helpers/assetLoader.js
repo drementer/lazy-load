@@ -9,9 +9,9 @@
 export default (element, options) => {
   const attributes = Object.entries(options.attrs);
 
-  const loadAttr = ([assetAttr, lazyAttr]) => {
+  const loadAttr = ([attr, lazyAttr]) => {
     const assetPath = element.getAttribute(lazyAttr);
-    if (assetPath) element.setAttribute(assetAttr, assetPath);
+    if (assetPath) element.setAttribute(attr, assetPath);
   };
 
   attributes.forEach(loadAttr);
