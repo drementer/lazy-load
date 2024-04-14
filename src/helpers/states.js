@@ -11,8 +11,9 @@ import settings from '../utils/settings.js';
  * @property {function} setErrorState - Function handling error state operations.
  */
 export default {
-  setWaiting: (element) => {
+  setWaiting: (element, options) => {
     element.setAttribute(settings.stateAttr, settings.states.waiting);
+    options.onWaiting(element);
   },
 
   setLoading: (element, options) => {

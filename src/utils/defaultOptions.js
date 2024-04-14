@@ -28,6 +28,7 @@ export default {
     threshold: 1,
     rootMargin: '100% 0px',
   },
+  onWaiting: () => {},
   onLoaded: () => {},
   onLoading: () => {},
   onError: (element, error) => console.warn('Error on:', element, error),
